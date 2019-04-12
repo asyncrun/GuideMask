@@ -25,6 +25,10 @@ public class Main : MonoBehaviour
 
     public void OnGUI()
     {
+        if (GUILayout.Button("=============  Close GuideMask  ============="))
+        {
+            GuideMask.Self.Close();
+        }
         if (GUILayout.Button("=============  Target 1  ============="))
         {
             GuideMask.Self.Play(Target1);

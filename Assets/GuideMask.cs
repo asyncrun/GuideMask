@@ -16,6 +16,10 @@ public class GuideMask : MaskableGraphic, ICanvasRaycastFilter
         return !RectTransformUtility.RectangleContainsScreenPoint(_targetArea, sp, eventCamera);
     }
 
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
 
     public void Play(RectTransform target)
     {
@@ -27,7 +31,7 @@ public class GuideMask : MaskableGraphic, ICanvasRaycastFilter
         if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, screenPoint, Camera.main,
             out localPoint))
         {
-            gameObject.SetActive(false);
+            Close();
             return;
         }
         
@@ -53,6 +57,7 @@ public class GuideMask : MaskableGraphic, ICanvasRaycastFilter
     {
         _targetArea = gameObject.transform.Find("TargetArea") as RectTransform;
         Self = this;
+        Close();
     }
     
 
